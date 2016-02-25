@@ -9,8 +9,8 @@ var express         = require('express'),
     routesController  = require('./controller/routes.js'),
     User            = require('./models/user.js'),
     Board           = require('./models/board.js'),
-    port            = process.env.PORT || 3000
-    mongoUri        = process.env.MONGOLAB_URI || 'mongodb://localhost/grocery_app_dev';
+    port            = process.env.PORT || 3000,
+    mongoUri        = process.env.MONGOLAB_URI || 'mongodb://localhost/comm-board-dp';
 
 
 // Public folder Styles/JS
