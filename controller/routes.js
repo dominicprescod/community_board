@@ -69,6 +69,7 @@ router.get('/users/:id', isLoggedIn, function(req, res) {
   // for user control flow within template (enables editing only on the user's own page)
     req.params.id == req.user.id ? res.locals.usertrue = true : res.locals.usertrue = false;
   // finding users by the id passed in the webpage
+  console.log(res.locals.usertrue)
   User.findById(req.params.id,function(err, user){
     // if the page viewed is not the person logged in find or create an inbox message board
     if(!res.locals.usertrue){
@@ -82,6 +83,18 @@ router.get('/users/:id', isLoggedIn, function(req, res) {
             });
           } else { //if the inbox messages does not exist it creates a new inbox message board between the users and renders the page
             var newInboxMessage = new Board({name:req.user.id+'-'+req.params.id});
+            newInboxMessage.fpal.push({
+              firstName: user.firstName,
+              lastName: user.lastName,
+              rId: user.id,
+              pic: user.pic
+            });
+            newInboxMessage.spal.push({
+              firstName:req.user.firstName,
+              lastName: req.user.lastName,
+              rId: req.user.id,
+              pic: req.user.pic
+            });
             newInboxMessage.save(function(err, board){
               res.render('profile.ejs', {
                 data:user,
@@ -92,8 +105,20 @@ router.get('/users/:id', isLoggedIn, function(req, res) {
           }
         });
     } else {
-      // rendering with that specific user's data
-      res.render('profile.ejs',{data: user});
+      // when the current user is viewing their profile page, render their inbox with all the between them and another user
+      // the inbox message is simply a board thats named with a combination of both user's ids with a - between them
+      // this query checks all boards for the current user's in as part of the name string
+      Board.find({name: {"$regex": req.params.id, "$options": "i"}},function(err,docs){
+        // console.log(docs);
+        // rendering with that specific user's data
+        res.render('profile.ejs',{
+          data: user,
+          inbox: docs,
+          loggedIn: req.user
+
+        });
+      });
+
     }
       });
 });
@@ -112,7 +137,6 @@ router.put('/:id/editPic', function(req,res){
 // SHOW board page
 // ====================================================
 router.get('/board/:id',function(req,res){
-req.params.id == req.user.id ? res.locals.usertrue = true : res.locals.usertrue = false;
   Board.findById(req.params.id,function(err,info){
     // console.log(info.name.replace(/[req.user.id-]/g,""));
     if(info.members.length === 0) res.redirect('/users/'+info.name.replace(req.user.id,"").replace('-',''));

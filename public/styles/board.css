@@ -37,11 +37,15 @@ header > a {
   font-size: 12px;
   text-decoration: none;
 }
-
+#board-info {
+  text-align: center;
+}
 #comments {
   margin: 0 auto;
   height: 300px;
   width: 375px;
+  padding-left: 10px;
+  padding-right: 10px;
   overflow-x: scroll;
 }
 main > form {
@@ -70,4 +74,17 @@ form :last-child {
   background: lightgrey;
   border-bottom-left-radius: 30%;
   border-top-right-radius: 30%;
+}
+.user-comment-container {
+  text-align: right;
+  height: 50px;
+  width: 300px;
+  background: lightblue;
+  border-bottom-right-radius: 30%;
+  border-top-left-radius: 30%;
+}
+.user-comment-container > a > img {
+  height: 40px;
+  width: 40px;
+  padding-left: 10px;
 }

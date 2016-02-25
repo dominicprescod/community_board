@@ -81,3 +81,50 @@ header > a {
   width: 30%;
   background: lightyellow;
 }
+#comments {
+  width: 370px;
+  height: 100px;
+  overflow: scroll;
+}
+#comment-box {
+  width: 250px;
+  height: 50px;
+}
+#inbox-send {
+  border: none;
+  background: lightgreen;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+
+}
+.comment {
+  display: inline-flex;
+  padding-bottom: 10px;
+
+}
+.comment > a > img {
+  height: 40px;
+  width: 40px;
+  padding-right: 10px;
+}
+.comment-container {
+  height: 50px;
+  width: 300px;
+  background: lightgrey;
+  border-bottom-left-radius: 30%;
+  border-top-right-radius: 30%;
+}
+.user-comment-container {
+  text-align: right;
+  height: 50px;
+  width: 300px;
+  background: lightblue;
+  border-bottom-right-radius: 30%;
+  border-top-left-radius: 30%;
+}
+.user-comment-container > a > img {
+  height: 40px;
+  width: 40px;
+  padding-left: 10px;
+}

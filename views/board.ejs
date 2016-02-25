@@ -11,11 +11,14 @@
     <header>
       <h1>Community Board</h1>
       <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+      <a href="/users/<%=user.id%>">Profile</a>
     </header>
     <main>
-      <h1><%=data.name%></h1>
-      <p><%=data.date%></p>
-      <p><%=data.members.length%> Neighbors </p>
+      <div id="board-info">
+        <h1><%=data.name%></h1>
+        <p><%=data.date%></p>
+        <p><%=data.members.length%> Neighbors </p>
+      </div>
       <div id="comments">
         <%for(var i = 0; i < data.comments.length; i++){%>
             <div class="comment">
@@ -27,11 +30,11 @@
               </div>
             </div>
             <% } else{%>
-              <div class="comment-container" >
+              <div class="user-comment-container">
                 <p><em><%=data.comments[i].from_name%></em></p>
                 <p><%=data.comments[i].value%></p>
               </div>
-              <a href="/users/<%=data.comments[i].from_id%>"><img src="<%=data.comments[i].from_pic%>"/></a>
+              <a href="/users/<%=data.comments[i].from_id%>"><img src="<%=data.comments[i].from_pic%>"style="padding-left: 10px"/></a>
             </div>
 
           <%}%>
@@ -46,7 +49,5 @@
         <input type="submit" value="Enter">
       </form>
     </main>
-
-<a href="/users/<%=user.id%>">Profile</a>
   </body>
 </html>
