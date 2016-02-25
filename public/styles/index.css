@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url('http://image.shutterstock.com/z/stock-photo-diverse-people-collage-of-diverse-multi-ethnic-and-mixed-age-people-expressing-different-emotions-289427012.jpg');
+  background-repeat: no-repeat;
+}
+@font-face {
+  font-family: 'ransom-note';
+  src: url('./ransom.cutupletters.ttf');
+}
+
+
+header{
+  font-family: 'ransom-note';
+  /*background: url('http://www.collegehills.org/files/Images/Event%20Graphics/Bulletin%20Board%20Community.jpg');*/
+  text-align: left;
+  color: white;
+  font-size: 20px;
+  background: black;
+  opacity: .7;
+  height: 10%;
+  padding: none;
+  margin-top: none;
+  /*padding-bottom: none;*/
+}
+
+h5 {
+  text-align: left;
+  color: white;
+  padding-bottom: 10%;
+}
+input {
+  background: none;
+  border: none;
+  color: white;
+}
+main {
+  padding-top: none;
+  width: 100%;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.submit {
+  background: lightgreen;
+  border-radius: 10px;
+  border: double 3px black;
+  /* opacity: .4; */
+  width: 45%;
+  color: black;
+  font-weight: 900;
+  margin-top: 5%;
+
+}
+
+#one {
+  float: left;
+  background: black;
+  width: 25%;
+  height: 100%;
+  opacity: .7;
+  text-align: center;
+  /*border-top-left-radius: 5%;*/
+  border-bottom-left-radius: 5%;
+}
+
+#two {
+  float: right;
+  background: lightgrey;
+  opacity: .7;
+  width: 75%;
+  height: 100%;
+  color: white;
+  /*border-top-right-radius: 5%;*/
+  border-bottom-right-radius: 5%;
+}
+
+#one > form {
+  padding-top: 15%;
+  width: 100%;
+  margin: 0 auto;
+}

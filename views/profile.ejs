@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title><%=data.firstName%>'s Profile</title>
+    <link rel="stylesheet" href="/styles/profile.css" type="text/css">
+  </head>
+  <body>
+    <header>
+      <h1>Community Board</h1>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </header>
+    <main>
+      <div class="profile-inbox">
+        <div class="profile-details">
+          <div class="Picture">
+            <img src="<%=data.pic%>"/>
+            <%if(usertrue){%>
+              <form class="" action="/<%=data.id%>/editPic" method="post">
+                <input type="text" name="pic" placeholder="Pic URL">
+                <input type="hidden" name="firstName" value="<%=data.firstName%>">
+                <input type="hidden" name="lastName" value="<%=data.lastName%>">
+                <input type="hidden" name="email" value="<%=data.email%>">
+                <input type="hidden" name="password" value="<%=data.password%>">
+                <input type="hidden" name="street" value="<%=data.street%>">
+                <input type="hidden" name="city" value="<%=data.city%>">
+                <input type="hidden" name="state" value="<%=data.state%>">
+                <input type="hidden" name="zip" value="<%=data.zip%>">
+                <input type="hidden" name="_method" value="PUT"/>
+                <input type="submit" value="Edit">
+              </form>
+            <%}%>
+          </div>
+          <div class="first-last-name">
+            <ul>
+              <li>
+                <h1><%=data.firstName%></h1>
+                <br>
+                <h1><%=data.lastName%></h1>
+              </li>
+              <hr>
+              <li><p>Email:</p></li>
+              <li><p><%=data.email%></p></li>
+            </ul>
+          </div>
+          <div class="email-address">
+            <hr>
+            <p>Address:</p>
+            <p>Street: <%=data.street%></p>
+            <p>City: <%=data.city%></p>
+            <p>State: <%=data.state%></p>
+            <p>Zip Code: <%=data.zip%></p>
+          </div>
+        </div>
+        <div class="inbox">
+          <%if(!usertrue){%>
+            <h3>Inbox</h3>
+            <div id="comments">
+              <%for(var i = 0; i < inbox.comments.length; i++){%>
+                <div class="comment" style="background: lightgrey">
+                  <p><em><%=inbox.comments[i].from_name%></em></p>
+                  <a href="/users/<%=inbox.comments[i].from_id%>"><img src="<%=inbox.comments[i].from_pic%>"/></a>
+                  <p><%=inbox.comments[i].value%></p>
+                </div>
+              <%}%>
+            </div>
+            <form action="/comment" method="post">
+              <input type="hidden" name="parent" value="<%=inbox.id%>">
+              <input type="hidden" name="from_id" value="<%=loggedIn.id%>">
+              <input type="hidden" name="from_name" value="<%=loggedIn.firstName%>">
+              <input type="hidden" name="from_pic" value="<%=loggedIn.pic%>">
+              <input type="text" name="value" placeholder="Comment">
+              <input type="submit" value="Send">
+            </form>
+          <%}%>
+        </div>
+      </div>
+      <div class="boards">
+        <h1>Boards</h1>
+        <%for(var i = 0; i < data.boards.length; i++){%>
+          <div class="my-boards">
+              <p>&#xE801</p>
+              <div><a href="/board/<%=data.boards[i].id%>"><%=data.boards[i].name%></a></div>
+              <div><%=data.boards[i].id%></div>
+              <div><%=data.boards[i].date%></div>
+          </div>
+        <%}%>
+      </div>
+    </main>
+    <footer>
+
+    </footer>
+      </body>
+</html>
