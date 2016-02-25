@@ -40,7 +40,7 @@ app.use(function(req, res, next) {
   next();
 });
 // using mongoose
-mongoose.connect('mongodb://localhost/community_board');
+// mongoose.connect('mongodb://localhost/community_board');
 mongoose.connect(mongoUri);
 
 // route for the users after the visiting the profile page
