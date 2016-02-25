@@ -35,10 +35,13 @@ router.post('/',passport.authenticate('local-signup',{
     // creating new boards according to the new user's info
     // grabbing the zip code, city and state from the user registration form and putting them in an array to loop through the options
     var boardChecks = [req.user.zip, req.user.city, req.user.state];
+    // console.log(boardChecks);
     // looping through each entry
     boardChecks.forEach(function(i){
+      // console.log('each is happening');
       // checks if the zip city or state already exists
       Board.findOne({'name': i},function(err,board){
+        // console.log('Board.findone is happening');
         if(!board){//if it does not exist do the following board = null
           var newBoard = new Board({name: i}); //create a new board object with the name set as the zip/city/state
           newBoard.members.push(req.user.id)
@@ -67,6 +70,9 @@ router.post('/',passport.authenticate('local-signup',{
 // ======================================================================================================================
 router.get('/users/:id', isLoggedIn, function(req, res) {
   // for user control flow within template (enables editing only on the user's own page)
+  console.log('req.params.id = ' + req.params.id);
+  console.log('req.user.id = ' + req.user.id);
+  console.log('res.locals.usertrue = ' + res.locals.usertrue);
     req.params.id == req.user.id ? res.locals.usertrue = true : res.locals.usertrue = false;
   // finding users by the id passed in the webpage
   console.log(res.locals.usertrue)

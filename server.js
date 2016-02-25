@@ -49,6 +49,7 @@ app.use('/',routesController);
 // connecting to the server..listening for request & response
 app.listen(port,function(){
   console.log('==========================');
-    console.log('Running on port = '+port);
-    console.log('==========================');
+  console.log('Running on port = '+port);
+  console.log('==========================');
+  console.log(' ');
 });
