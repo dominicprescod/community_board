@@ -9,7 +9,8 @@ var express         = require('express'),
     routesController  = require('./controller/routes.js'),
     User            = require('./models/user.js'),
     Board           = require('./models/board.js'),
-    port            = 3000 || process.env.PORT;
+    port            = process.env.PORT || 3000
+    mongoUri        = process.env.MONGOLAB_URI || 'mongodb://localhost/grocery_app_dev';
 
 
 // Public folder Styles/JS
@@ -40,7 +41,7 @@ app.use(function(req, res, next) {
 });
 // using mongoose
 mongoose.connect('mongodb://localhost/community_board');
-
+mongoose.connect(mongoUri);
 
 // route for the users after the visiting the profile page
 app.use('/',routesController);
