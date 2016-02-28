@@ -15,7 +15,7 @@ body {
 header{
   font-family: 'ransom-note';
   /*background: url('http://www.collegehills.org/files/Images/Event%20Graphics/Bulletin%20Board%20Community.jpg');*/
-  text-align: left;
+  text-align: center;
   color: white;
   font-size: 20px;
   background: black;
@@ -27,9 +27,9 @@ header{
 }
 
 h5 {
-  text-align: left;
+  text-align: center;
   color: white;
-  padding-bottom: 10%;
+  padding-bottom: 5%;
 }
 input {
   background: none;
@@ -56,29 +56,21 @@ main {
 }
 
 #one {
-  float: left;
+  margin-top: 15%;
+  border: 5px solid white;
   background: black;
-  width: 25%;
-  height: 100%;
+  width: 20%;
+  height: 100%%;
   opacity: .7;
   text-align: center;
-  /*border-top-left-radius: 5%;*/
-  border-bottom-left-radius: 5%;
-}
-
-#two {
-  float: right;
-  background: lightgrey;
-  opacity: .7;
-  width: 75%;
-  height: 100%;
-  color: white;
-  /*border-top-right-radius: 5%;*/
-  border-bottom-right-radius: 5%;
+  border-radius: 5%;
+  /* border-top-left-radius: 5%; */
+  /* border-bottom-left-radius: 5%; */
+  margin-left: 41%;
 }
 
 #one > form {
-  padding-top: 15%;
+  padding-top: 5%;
   width: 100%;
   margin: 0 auto;
 }
