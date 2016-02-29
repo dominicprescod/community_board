@@ -114,6 +114,7 @@ header > a {
   background: lightgrey;
   border-bottom-left-radius: 30%;
   border-top-right-radius: 30%;
+  overflow: scroll;
 }
 .user-comment-container {
   text-align: right;
@@ -122,6 +123,7 @@ header > a {
   background: lightblue;
   border-bottom-right-radius: 30%;
   border-top-left-radius: 30%;
+  overflow: scroll;
 }
 .user-comment-container > a > img {
   height: 40px;
