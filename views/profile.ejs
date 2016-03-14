@@ -12,6 +12,12 @@
       <h1>Community Board</h1>
       <a href="/logout" class="btn btn-default btn-sm">Logout</a>
       <a href="/users/<%=loggedIn.id%>">Profile</a>
+<%if(usertrue){%>
+      <form action="/users/<%=data.id%>" method="POST">
+							<input type="hidden" name="_method" value="DELETE">
+							<button id="delete-button">Delete User</button>
+						</form>
+          <%}%>
     </header>
     <main>
       <div class="profile-inbox">

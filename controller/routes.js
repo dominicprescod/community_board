@@ -44,7 +44,7 @@ router.post('/',passport.authenticate('local-signup',{
         // console.log('Board.findone is happening');
         if(!board){//if it does not exist do the following board = null
           var newBoard = new Board({name: i}); //create a new board object with the name set as the zip/city/state
-          newBoard.members.push(req.user.id)
+          newBoard.members.push(req.user.id);
           // saving the boards to the user schema for reference
           User.findById(req.user.id,function(err, user){
               user.boards.push(newBoard);
@@ -75,7 +75,7 @@ router.get('/users/:id', isLoggedIn, function(req, res) {
   console.log('res.locals.usertrue = ' + res.locals.usertrue);
     req.params.id == req.user.id ? res.locals.usertrue = true : res.locals.usertrue = false;
   // finding users by the id passed in the webpage
-  console.log(res.locals.usertrue)
+  console.log(res.locals.usertrue);
   User.findById(req.params.id,function(err, user){
     // if the page viewed is not the person logged in find or create an inbox message board
     if(!res.locals.usertrue){
@@ -151,7 +151,7 @@ router.get('/board/:id',function(req,res){
       user: req.user
     });
   });
-})
+});
 // ====================================================
 
 // New Comment
@@ -169,7 +169,14 @@ router.post('/comment',function(req,res){
 });
 // ====================================================
 
-
+// ================================================================
+// Deleting a User
+router.delete('/users/:id', function(req,res){
+  User.findByIdAndRemove(req.params.id,function(){
+  });
+    res.redirect('/');
+});
+// ================================================================
 
 
 
