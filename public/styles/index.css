@@ -29,6 +29,7 @@ header h1 {
   background: url('faces-logo.jpg');
   height: 110px;
   width: 130px;
+  margin-left: 10px;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -50,56 +51,19 @@ header h1 {
   background: red;
   height: 40px;
   width: 80px;
-  box-shadow: 3px 5px;
+  box-shadow: 3px 5px black;
   border: none;
   border-radius: 10px;
-}
-
-h5 {
-  text-align: center;
-  color: white;
-  padding-bottom: 5%;
-}
-input {
-  background: none;
-  border: none;
+  font-weight: bolder;
   color: white;
 }
-main {
-  padding-top: none;
-  width: 100%;
-  height: 500px;
-  margin: 0 auto;
+
+/*.login-signup form {
+  margin-top: 20px;
 }
 
-.submit {
-  background: lightgreen;
-  border-radius: 10px;
-  border: double 3px black;
-  /* opacity: .4; */
-  width: 45%;
-  color: black;
-  font-weight: 900;
-  margin-top: 5%;
-
-}
-
-#one {
-  margin-top: 15%;
-  border: 5px solid white;
-  background: black;
-  width: 20%;
-  height: 100%%;
-  opacity: .7;
-  text-align: center;
-  border-radius: 5%;
-  /* border-top-left-radius: 5%; */
-  /* border-bottom-left-radius: 5%; */
-  margin-left: 41%;
-}
-
-#one > form {
-  padding-top: 5%;
-  width: 100%;
-  margin: 0 auto;
-}
+#form-button {
+  height: 30px;
+  width: 70px;
+  background: red;
+}*/
