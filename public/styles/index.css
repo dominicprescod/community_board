@@ -4,6 +4,7 @@
 }
 body {
   background: url('https://images.unsplash.com/photo-1455734729978-db1ae4f687fc?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=cca8a94bda503431f29a080b24a4ba02');
+  /*background: #e7e7e7;*/
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -59,19 +60,21 @@ header h1 {
 }
 
 main {
+  background: #f8f8f8;
+  margin: 5% auto;
+  width: 90%;
+  height: 400px;
   text-align: center;
 }
 
-#one form input {
-  display: inline;
-}
-
-/*.login-signup form {
+main h4 {
+  text-align: left;
+  margin-left: 10%;
   margin-top: 20px;
 }
-
-#form-button {
-  height: 30px;
-  width: 70px;
-  background: red;
-}*/
+main form input {
+  margin: 0 auto;
+  display: block;
+  width: 80%;
+  height: 20px;
+}
