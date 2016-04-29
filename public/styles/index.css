@@ -58,6 +58,14 @@ header h1 {
   color: white;
 }
 
+main {
+  text-align: center;
+}
+
+#one form input {
+  display: inline;
+}
+
 /*.login-signup form {
   margin-top: 20px;
 }
