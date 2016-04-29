@@ -3,10 +3,10 @@
   padding: 0;
 }
 body {
-  background: url('https://images.unsplash.com/photo-1455734729978-db1ae4f687fc?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=cca8a94bda503431f29a080b24a4ba02');
-  /*background: #e7e7e7;*/
-  background-repeat: no-repeat;
-  background-size: cover;
+  /*background: url('https://images.unsplash.com/photo-1455734729978-db1ae4f687fc?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=cca8a94bda503431f29a080b24a4ba02');*/
+  background: #e7e7e7;
+  /*background-repeat: no-repeat;
+  background-size: cover;*/
 }
 @font-face {
   font-family: 'ransom-note';
@@ -20,7 +20,7 @@ header{
   color: black;
   font-size: 20px;
   background: white;
-  height: 99px;
+  height: 100px;
   width: 100%;
   padding: none;
   margin-top: none;
@@ -42,7 +42,7 @@ header h1 {
 .login-signup {
   width: 50%;
   text-align: right;
-  margin-top: 20px;
+  margin-top: 25px;
   margin-right: 40px;
   font-family: monospace;
   font-size: 17px;
@@ -63,18 +63,61 @@ main {
   background: #f8f8f8;
   margin: 5% auto;
   width: 90%;
-  height: 400px;
+  height: 430px;
   text-align: center;
+  border: 2px solid lightgrey;
+  border-radius: 10px;
 }
 
 main h4 {
   text-align: left;
   margin-left: 10%;
   margin-top: 20px;
+  font-size: 20px;
+  font-weight: 100;
 }
+
 main form input {
   margin: 0 auto;
   display: block;
   width: 80%;
-  height: 20px;
+  height: 40px;
+  font-size: 30px;
+  font-weight: 100;
+}
+
+main form button {
+    margin-top: 40px;
+    width: 80%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background: red;
+    font-family: monospace;
+    font-size: 30px;
+    color: white;
+}
+
+.signup {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 80px;
+  width: 100%;
+  border-bottom: 2px solid lightgrey;
+  text-align: left;
+  font-size: 13px;
+}
+
+.signup ul {
+  list-style: none;
+  margin-left: 10%;
+  padding-top: 20px;
+}
+
+.signup ul h1 {
+  color: red;
+}
+
+button:hover {
+  background: lightgreen;
 }
