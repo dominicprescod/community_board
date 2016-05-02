@@ -15,6 +15,10 @@ router.get('/', function(req, res){
 
 // Login & Logout
 // ===========================================================
+// Login Page
+router.get('/login', function(req, res){
+  res.render('login.ejs');
+});
 // login
 router.post('/login',passport.authenticate('local-login',{
     failureRedirect: '/',}), function(req,res){
@@ -30,6 +34,11 @@ router.get('/logout',function(req,res){
 
 // Adding new user! / Registering a new user
 // =================================================================================================================================================================================
+// Signup Page
+router.get('/signup', function(req, res){
+  res.render("signup.ejs");
+});
+
 router.post('/',passport.authenticate('local-signup',{
   failureRedirect: '/'}),function(req,res){
     // creating new boards according to the new user's info
