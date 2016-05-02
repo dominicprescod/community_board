@@ -36,7 +36,7 @@
           </ul>
       </div>
     </header>
-    <main>
+    <main style="height: 350px; margin: 2% auto;">
       <!-- <div class="profile-inbox">
         <div class="profile-details">
           <div class="Picture">
@@ -156,7 +156,10 @@
             <%}%>
         </div>
       </div> -->
-      <h1>Neighborhoods</h1>
+      <form class="" action="index.html" method="post">
+      <input type="text" name="name" placeholder="Find your neighborhood">
+      </form>
+
       <div class="boards">
         <%for(var i = 0; i < data.boards.length; i++){%>
           <a href="/board/<%=data.boards[i].id%>"><div class="my-boards">
@@ -165,8 +168,8 @@
         <%}%>
       </div>
     </main>
-    <main>
-      
+    <main style="height: 950px;">
+
     </main>
     <footer>
 
