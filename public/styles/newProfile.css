@@ -1,0 +1,28 @@
+.info {
+  width: 50%;
+  text-align: right;
+  margin-right: 40px;
+  margin-top: 25px;
+}
+
+.info ul li {
+  list-style: none;
+  display: inline-block;
+  font-size: 60px;
+  color: grey;
+  margin-left: 50px;
+}
+
+.info ul li img {
+  border-radius: 100px;
+  width: 70%;
+  height: 70%;
+}
+
+.my-boards {
+  background: lightgrey;
+  height: 100px;
+  width: 100%;
+  margin: 1% auto;
+  border-bottom: 2px solid grey;
+}
