@@ -34,14 +34,24 @@
 
       <div class="label">
       </div>
-      <% for(var i = inbox.comments.length - 1; i >= 0; i--) {%>
+      <% for(var i = inbox.length - 1; i >= 0; i--) {%>
       <div class="inbox-messages">
         <ul>
-          <li><img src="<%=inbox.comments[i].from_pic%>" alt="" /></li>
-          <li>
-            <h4><%=inbox.comments[i].from_name%></h4>
-            <p><%=inbox.comments[i].value%></p>
-          </li>
+          <%if(data.id === inbox[i].fpal[0].rId){%>
+            <li><img src="<%= inbox[i].spal[0].pic%>"/></li>
+            <li>
+              <h4><%=inbox[i].spal[0].firstName%> <%=inbox[i].spal[0].lastName%></h4>
+              <p><%= inbox.comments%></p>
+            </li>
+
+          <%} else if(data.id === inbox[i].spal[0].rId){%>
+            <li><img src="<%= inbox[i].fpal[0].pic%>"/></li>
+            <li>
+              <h4><%=inbox[i].fpal[0].firstName%> <%=inbox[i].fpal[0].lastName%></h4>
+              <p><%= inbox.comments %></p>
+            </li>
+          <%}%>
+
         </ul>
       </div>
       <%}%>
