@@ -118,3 +118,7 @@ main form button {
 button:hover {
   background: lightgreen;
 }
+
+a {
+  text-decoration: none;
+}
