@@ -86,6 +86,8 @@ main form input {
   height: 60px;
   font-size: 40px;
   font-weight: 200;
+  background: #FAFAFA;
+  border: none;
 }
 
 main form button {
