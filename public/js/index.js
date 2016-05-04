@@ -8,7 +8,15 @@ $(function(){
   });
 
   $('.list').click(function(){
-    $(this).find('.inbox-message').width('100%');
+    var $me = $(this).find('.inbox-message');
+    $me.addClass("width");
+
+    $('.inbox-message h1').click(function(e){
+      $me.removeClass("width");
+      e.stopPropagation();
+    });
   });
+
+
 
 });

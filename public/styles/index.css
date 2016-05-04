@@ -233,3 +233,7 @@ section ul li {
     word-break: break-word;
     font-size: 20px;
 }
+
+.width {
+  width: 100%;
+}
