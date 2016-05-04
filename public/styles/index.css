@@ -133,16 +133,20 @@ a {
 
 section {
   background: white;
-  margin: 0 auto;
-  width: 90%;
+  margin: 10% auto;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: -270px;
+  display: none;
 }
 
-#inbox {
-    color: red;
+#h1 {
+    color: lightgray;
+    font-weight: 100;
     padding-left: 5%;
     font-size: 60px;
     background: #e7e7e7;
-    border-bottom: 5px solid lightgray;
 }
 
 section ul li {
@@ -182,4 +186,50 @@ section ul li {
   font-family: monospace;
   overflow: hidden;
   word-break: break-word;
+}
+
+.inbox-message {
+  position: fixed;
+  background: white;
+  width: 0;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  right: 0;
+}
+
+.inbox-message .octicon-arrow-left {
+  width: 100%;
+  font-size: 100px;
+  padding: 20px;
+  border-bottom: 1px solid grey;
+}
+
+.string-pic {
+  width: 20%;
+  height: 100%;
+  text-align: center;
+}
+
+.string-pic img {
+  border-radius: 80px;
+  margin-top: 10%;
+}
+
+.string-message {
+  width: 100%;
+  height: 100%;
+  margin-top: 1%;
+}
+
+.string-message h1 {
+  width: 100%;
+  height: 15%;
+}
+
+.string-message p {
+    width: 100%;
+    height: 70%;
+    word-break: break-word;
+    font-size: 20px;
 }

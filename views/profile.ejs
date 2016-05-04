@@ -23,39 +23,56 @@
       </form>
 
       <div class="boards">
-        <%for(var i = 0; i < data.boards.length; i++){%>
+        <%  for(var i = 0; i < data.boards.length; i++) { %>
           <a href="/board/<%=data.boards[i].id%>"><div class="my-boards">
-            <%=data.boards[i].name%>
+            <%= data.boards[i].name  %>
           </div></a>
-        <%}%>
+        <%  } %>
       </div>
     </main>
-    <section style="height: 950px;">
-      <h1 id="inbox">Inbox</h1>
+    <section>
+      <h1 id="h1">Inbox</h1>
       <ul>
-        <% for(var i = inbox.length - 1; i >= 0; i--) {%>
-          <%if(data.id === inbox[i].fpal[0].rId){%>
-        <li>
+        <% for(var i = inbox.length - 1; i >= 0; i--) { %>
+          <%  if(data.id === inbox[i].fpal[0].rId)  { %>
+        <li class="list">
           <div class="message-photo">
             <img src="<%=data.pic%>"/>
           </div>
           <div class="from-message">
-            <h1><%=inbox[i].spal[0].firstName%> <%=inbox[i].spal[0].lastName%></h1>
-            <p><%= inbox[i].comments[inbox[i].comments.length - 1].value%></p>
+            <h1>  <%=inbox[i].spal[0].firstName%> <%=inbox[i].spal[0].lastName%>  </h1>
+            <p> <%= inbox[i].comments[inbox[i].comments.length - 1].value%> </p>
+          </div>
+          <div class="inbox-message">
+            <h1 class=" back octicon octicon-arrow-left"></h1>
+            <ul>
+          <%  for(var j = 0; j < inbox[i].comments.length; j++) { %>
+            <li>
+              <div class="string-pic">
+                <img src="<%=data.pic%>" alt="" />
+              </div>
+              <div class="string-message">
+                <h1> <%= inbox[i].comments[j].from_name %> </h1>
+                 <h1> <%= inbox[i].comments[j].date %> </h1>
+                <p> <%= inbox[i].comments[j].value %> </p>
+              </div>
+            </li>
+          <% }  %>
+          </ul>
           </div>
         </li>
-        <%} else if(data.id === inbox[i].spal[0].rId){%>
-          <li>
+        <%  } else if(data.id === inbox[i].spal[0].rId) { %>
+          <li class="list">
             <div class="message-photo">
               <img src="<%=data.pic%>"/>
             </div>
             <div class="from-message">
-              <h1><%=inbox[i].fpal[0].firstName%> <%=inbox[i].fpal[0].lastName%></h1>
-              <p><%= inbox[i].comments[inbox[i].comments.length - 1].value %></p>
+              <h1>  <%= inbox[i].fpal[0].firstName%> <%=inbox[i].fpal[0].lastName  %>  </h1>
+              <p> <%= inbox[i].comments[inbox[i].comments.length - 1].value %> </p>
             </div>
           </li>
-          <%}%>
-          <%}%>
+          <%  } %>
+          <%  } %>
       </ul>
     </section>
       </body>

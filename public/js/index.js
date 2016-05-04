@@ -1,13 +1,14 @@
 $(function(){
-  var $logInButton = $('.login-signup a');
-  var $signUp = $('.login-signup button');
+  var $section = $('section');
+  var $inbox = $('.octicon-comment');
+  var $messages = $('.inbox-message');
 
-  $logInButton.click(function(){
-    console.log($(this));
+  $inbox.click(function(){
+    $section.is(":visible") ? $section.hide() : $section.show();
   });
 
-  $signUp.click(function(){
-    console.log($(this));
+  $('.list').click(function(){
+    $(this).find('.inbox-message').width('100%');
   });
 
 });
