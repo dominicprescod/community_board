@@ -11,7 +11,7 @@ $(function(){
     var $me = $(this).find('.inbox-message');
     $me.addClass("width");
 
-    $('.inbox-message h1').click(function(e){
+    $('.inbox-message .octicon').click(function(e){
       $me.removeClass("width");
       e.stopPropagation();
     });

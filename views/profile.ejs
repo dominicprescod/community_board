@@ -12,7 +12,7 @@
       </div>
       <div class="info">
           <ul>
-            <a href="#"><li class="octicon octicon-comment"><h5>0</h5></li></a>
+            <a href="#"><li class="octicon octicon-comment"><h5></h5></li></a>
             <li><img src="<%=data.pic%>"/></li>
           </ul>
       </div>
@@ -53,12 +53,20 @@
               </div>
               <div class="string-message">
                 <h1> <%= inbox[i].comments[j].from_name %> </h1>
-                 <h1> <%= inbox[i].comments[j].date %> </h1>
+                 <h1 class="time"> <%= inbox[i].comments[j].date %> </h1>
                 <p> <%= inbox[i].comments[j].value %> </p>
               </div>
             </li>
           <% }  %>
           </ul>
+          <form action="/comment" method="post">
+               <input type="hidden" name="parent" value="<%=inbox[i].id%>">
+               <input type="hidden" name="from_id" value="<%=loggedIn.id%>">
+               <input type="hidden" name="from_name" value="<%=loggedIn.firstName%>">
+               <input type="hidden" name="from_pic" value="<%=loggedIn.pic%>">
+               <input type="text" name="value" class="comment-box" placeholder="Comment">
+               <input type="submit" class="inbox-send" value="Send">
+             </form>
           </div>
         </li>
         <%  } else if(data.id === inbox[i].spal[0].rId) { %>
@@ -69,6 +77,31 @@
             <div class="from-message">
               <h1>  <%= inbox[i].fpal[0].firstName%> <%=inbox[i].fpal[0].lastName  %>  </h1>
               <p> <%= inbox[i].comments[inbox[i].comments.length - 1].value %> </p>
+            </div>
+            <div class="inbox-message">
+              <h1 class="octicon octicon-arrow-left"></h1>
+              <ul>
+            <%  for(var j = 0; j < inbox[i].comments.length; j++) { %>
+              <li>
+                <div class="string-pic">
+                  <img src="<%=data.pic%>" alt="" />
+                </div>
+                <div class="string-message">
+                  <h1> <%= inbox[i].comments[j].from_name %> </h1>
+                   <h1 class="time"> <%= inbox[i].comments[j].date %> </h1>
+                  <p> <%= inbox[i].comments[j].value %> </p>
+                </div>
+              </li>
+            <% }  %>
+            </ul>
+            <form action="/comment" method="post">
+               <input type="hidden" name="parent" value="<%=inbox[i].id%>">
+               <input type="hidden" name="from_id" value="<%=loggedIn.id%>">
+               <input type="hidden" name="from_name" value="<%=loggedIn.firstName%>">
+               <input type="hidden" name="from_pic" value="<%=loggedIn.pic%>">
+               <input type="text" name="value" class="comment-box" placeholder="Comment">
+               <input type="submit" class="inbox-send" value="Send">
+             </form>
             </div>
           </li>
           <%  } %>
