@@ -174,6 +174,7 @@ router.post('/comment',function(req,res){
       board.comments.push(newComment);
       board.save(function(){});
       res.redirect('/board/'+newComment.parent);
+      // res.end();
     });
 });
 // ====================================================

@@ -59,7 +59,7 @@
             </li>
           <% }  %>
           </ul>
-          <form action="/comment" method="post">
+          <form action="">
                <input type="hidden" name="parent" value="<%=inbox[i].id%>">
                <input type="hidden" name="from_id" value="<%=loggedIn.id%>">
                <input type="hidden" name="from_name" value="<%=loggedIn.firstName%>">
@@ -94,7 +94,7 @@
               </li>
             <% }  %>
             </ul>
-            <form action="/comment" method="post">
+            <form action="">
                <input type="hidden" name="parent" value="<%=inbox[i].id%>">
                <input type="hidden" name="from_id" value="<%=loggedIn.id%>">
                <input type="hidden" name="from_name" value="<%=loggedIn.firstName%>">
