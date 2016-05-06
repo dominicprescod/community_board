@@ -3,6 +3,7 @@ $(function(){
   var $section = $('section');
   var $inbox = $('.octicon-comment');
   var $messages = $('.inbox-message');
+  // $(".inbox-message ul").scrollTop($(".width ul")[0].scrollHeight);
 
   $inbox.click(function(){
     $section.is(":visible") ? $section.hide() : $section.show();
@@ -10,10 +11,21 @@ $(function(){
 
   $('.list').click(function(){
     var $me = $(this).find('.inbox-message');
+    var $current = $me.find('ul');
+    var $active = $(this).find('.from-message');
+    $active.addClass('active');
     $me.addClass("width");
 
+    $current.scrollTop($current[0].scrollHeight);
+    // $('.width ul').animate({
+    //   scrollTop: $('.width ul li')[0].offset().top
+    // },'slow');
+  // $('.width ul').scrollTop($('.width ul')[0].scrollHeight);
+
     $('.inbox-message .octicon').click(function(e){
+      // $("#comments").scrollTop($("#comments")[0].scrollHeight);
       $me.removeClass("width");
+      $active.removeClass('active');
       e.stopPropagation();
     });
   });
@@ -28,7 +40,7 @@ $(function(){
         from_pic: $(this).serializeArray()[3].value,
         value: $(this).serializeArray()[4].value
       };
-      console.log(newMessage);
+      // console.log(newMessage);
       socket.emit('chat message', newMessage);
       $('.comment-box').val('');
       return false;
@@ -49,6 +61,8 @@ $(function(){
     $li.append($stringPic)
         .append($stringMessage);
     $('.width ul').append($li);
+    $('.width ul').scrollTop($('.width ul')[0].scrollHeight);
+    $('.active p').text(msg.value);
   });
 
 
