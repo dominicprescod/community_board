@@ -187,6 +187,9 @@ section {
   overflow: hidden;
   word-break: break-word;
   color: #04B472;
+  border-bottom: 1px solid gray;
+  font-style: italic;
+  color: grey;
 }
 
 .inbox-message {
@@ -206,7 +209,7 @@ section {
       padding: 10px;
       height: 5%;
       background: lightgray;
-      color: red;
+      color: whitesmoke;
 }
 
 .inbox-message ul {

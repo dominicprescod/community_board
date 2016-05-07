@@ -13,7 +13,7 @@ main {
   list-style: none;
   display: inline-block;
   font-size: 60px;
-  color: grey;
+  color: #04B472;
 }
 
 .info ul li img {

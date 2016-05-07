@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
+  <!-- <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/styles/board.css" type="text/css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script type="text/javascript" src="/js/board.js"></script>
     <title><%=data.name%> Board</title>
+  </head> -->
+  <% include ./partials/head %>
+  <head>
+    <link rel="stylesheet" href="../styles/octicons/octicons.css">
+    <link rel="stylesheet" href="../styles/newProfile.css">
   </head>
   <body>
-    <header>
+    <!-- <header>
       <h1>Community Board</h1>
       <a href="/logout" class="btn btn-default btn-sm">Logout</a>
       <a href="/users/<%=user.id%>">Profile</a>
-    </header>
+    </header> -->
+    <% include ./partials/profileHeader.ejs %>
     <main>
       <div id="board-info">
         <h1><%=data.name%></h1>
