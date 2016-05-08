@@ -35,10 +35,11 @@ $(function(){
       // console.log($(this).serializeArray()[4].value);
       var newMessage = {
         parent: $(this).serializeArray()[0].value,
-        from_id: $(this).serializeArray()[1].value,
-        from_name: $(this).serializeArray()[2].value,
-        from_pic: $(this).serializeArray()[3].value,
-        value: $(this).serializeArray()[4].value
+        parent_name: $(this).serializeArray()[1].value,
+        from_id: $(this).serializeArray()[2].value,
+        from_name: $(this).serializeArray()[3].value,
+        from_pic: $(this).serializeArray()[4].value,
+        value: $(this).serializeArray()[5].value
       };
       // console.log(newMessage);
       socket.emit('chat message', newMessage);
@@ -60,9 +61,12 @@ $(function(){
     var $li = $('<li>');
     $li.append($stringPic)
         .append($stringMessage);
-    $('.width ul').append($li);
-    $('.width ul').scrollTop($('.width ul')[0].scrollHeight);
-    $('.active p').text(msg.value);
+    $('.'+msg.parent_name+"-message").append($li);
+    if($('.width ul').is(':visible')){
+      $('.width ul').scrollTop($('.width ul')[0].scrollHeight);
+    }
+    $('.'+msg.parent_name+' p').text(msg.value);
+
   });
 
 
