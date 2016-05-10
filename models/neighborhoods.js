@@ -2,11 +2,12 @@ var mongoose = require('mongoose');
 mongoose.set('debug', true);
 var Schema = mongoose.Schema;
 var boardSchema = require('./boards.js').schema;
+var userSchema = require('./user.js').schema;
 
 var neighborhoodSchema = new Schema ({
     title: {type: String, required: true},
     boards: [boardSchema],
-    members: [String],
+    members: [userSchema],
     images: [String],
 }, {collection: 'neighborhoods'});
 

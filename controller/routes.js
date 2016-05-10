@@ -163,21 +163,21 @@ router.get('/board/:id',function(req,res){
 });
 // ====================================================
 
-// New Comment
-// ====================================================
-router.post('/comment',function(req,res){
-  // creates a new comment using the schema
-    var newComment = new Comment(req.body);
-    // finds the current board using the information captured the form
-    Board.findById(newComment.parent,function(err,board){
-      // pushing to the comments element in the object and saving
-      board.comments.push(newComment);
-      board.save(function(){});
-      res.redirect('/board/'+newComment.parent);
-      // res.end();
-    });
-});
-// ====================================================
+// // New Comment
+// // ====================================================
+// router.post('/comment',function(req,res){
+//   // creates a new comment using the schema
+//     var newComment = new Comment(req.body);
+//     // finds the current board using the information captured the form
+//     Board.findById(newComment.parent,function(err,board){
+//       // pushing to the comments element in the object and saving
+//       board.comments.push(newComment);
+//       board.save(function(){});
+//       res.redirect('/board/'+newComment.parent);
+//       // res.end();
+//     });
+// });
+// // ====================================================
 
 // ================================================================
 // Deleting a User
