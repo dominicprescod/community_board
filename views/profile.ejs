@@ -17,18 +17,21 @@
           </ul>
       </div>
     </header>
-    <main style="height: 350px; margin: 2% auto;">
+    <main style="height: 750px;">
       <form class="" action="index.html" method="post">
       <input type="text" name="name" placeholder="Find your neighborhood">
       </form>
 
       <div class="boards">
-        <%  for(var i = 0; i < data.boards.length; i++) { %>
-          <a href="/board/<%=data.boards[i].id%>"><div class="my-boards">
-            <%= data.boards[i].name  %>
-          </div></a>
-        <%  } %>
+        <div class="my-boards manhattan">Manhattan</div>
+        <div class="my-boards">Brooklyn</div>
+        <div class="my-boards">Bronx</div>
+        <div class="my-boards">Queens</div>
+        <div class="my-boards">Staten Island</div>
       </div>
+    </main>
+    <main>
+      <h1>Notifications</h1>
     </main>
     <section>
       <h1 id="h1">Inbox</h1>
