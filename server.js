@@ -9,6 +9,7 @@ var express         = require('express'),
     http            = require('http').Server(app),
     io              = require('socket.io')(http),
     routesController  = require('./controller/routes.js'),
+    convertController = require('./controller/convert.js'),
     User            = require('./models/user.js'),
     Board           = require('./models/board.js'),
     port            = process.env.PORT || 3000,
@@ -49,6 +50,8 @@ mongoose.connect(mongoUri);
 
 // route for the users after the visiting the profile page
 app.use('/',routesController);
+
+// app.use('/convert', convertController);
 
 // requiring socket
 require('./controller/socket.js')(http);
