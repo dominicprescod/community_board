@@ -5,8 +5,17 @@ $(function(){
   var $messages = $('.inbox-message');
   // $(".inbox-message ul").scrollTop($(".width ul")[0].scrollHeight);
 
-  $inbox.click(function(){
-    $section.is(":visible") ? $section.hide() : $section.show();
+  $('.info ul a').click(function(){
+    if($section.is(":visible")){
+      $section.hide();
+      $('.info ul a li').removeClass('octicon-x');
+      $('.info ul a li').addClass('octicon-comment');
+    } else  {
+      $section.show();
+      $('.info ul a li').removeClass('octicon-comment');
+      $('.info ul a li').addClass('octicon-x');
+    }
+    // $section.is(":visible") ? $section.hide() : $section.show();
   });
 
   $('.list').click(function(){
@@ -69,6 +78,28 @@ $(function(){
 
   });
 
+$('.my-boards').click(function(){
+  $('#show-neighborhoods ul').empty();
+  $('#show-neighborhoods div h1').text($(this).text());
+
+  $.ajax({
+    url: "/neighborhoods/"+$(this).text(),
+    method: "GET"
+  }).then(function(response){
+    console.log(response);
+    response.forEach(function(i){
+      var $a = $('<a>').attr('href', '/neighborhood/'+i._id);
+      var $ul = $('<li>').text(i.title);
+      $a.append($ul);
+      $('#show-neighborhoods ul').append($a);
+    });
+  });
+  $('#show-neighborhoods').show();
+});
+
+$('#show-neighborhoods h1').click(function(){
+  $('#show-neighborhoods').hide();
+});
 
 
 });

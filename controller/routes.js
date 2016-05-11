@@ -3,7 +3,8 @@ var express       = require('express'),
     router        = express.Router(),
     User          = require('../models/user.js'),
     Comment       = require('../models/comment.js'),
-    Board         = require('../models/board.js');
+    Board         = require('../models/board.js'),
+    Neighborhoods = require('../models/neighborhoods.js');
 
 // homepage
 // =====================================
@@ -188,6 +189,18 @@ router.delete('/users/:id', function(req,res){
 });
 // ================================================================
 
+
+router.get('/neighborhoods/:id', function(req, res){
+  Neighborhoods.find({borough: req.params.id}, function(err, data){
+    res.send(data);
+  });
+});
+
+router.get('/neighborhood/:id', function(req, res){
+  Neighborhoods.findById(req.params.id, function(err, data){
+    res.render('neighborhood.ejs', data);
+  });
+});
 
 
 function isLoggedIn(req, res, next) {
