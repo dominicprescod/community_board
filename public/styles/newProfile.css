@@ -1,5 +1,5 @@
 main {
-  margin: 5% auto;
+  margin: 10% auto;
 }
 
 .info {
@@ -24,24 +24,17 @@ main {
 
 .my-boards {
   height: 140px;
-  width: 40%;
+  width: 80%;
   margin: 1%;
   border-bottom: 2px solid grey;
   display: inline-block;
-  background: url('http://www.usnews.com/dims4/USNEWS/1eb114b/2147483647/thumbnail/652x435%3E/quality/85/?url=%2Fcmsmedia%2F55%2F1a%2F4d22737c4537af16461ac1a14c3e%2F140703-homesneighborhood-stock.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
   margin-top: 30px;
-  font-size: 60px;
+  font-size: 110px;
   color: white;
   box-shadow: 5px 5px lightgray;
-  border-radius: 15px
+  border-radius: 15px;
 }
 
-.manhattan {
-  width: 80%;
-  font-size: 110px;
-}
 
 .boards {
     border-top: 2px solid grey;

@@ -86,7 +86,7 @@ $('.my-boards').click(function(){
     url: "/neighborhoods/"+$(this).text(),
     method: "GET"
   }).then(function(response){
-    console.log(response);
+    // console.log(response);
     response.forEach(function(i){
       var $a = $('<a>').attr('href', '/neighborhood/'+i._id);
       var $ul = $('<li>').text(i.title);
@@ -97,9 +97,8 @@ $('.my-boards').click(function(){
   $('#show-neighborhoods').show();
 });
 
-$('#show-neighborhoods h1').click(function(){
+$('.octicon-home').click(function(){
   $('#show-neighborhoods').hide();
 });
-
 
 });

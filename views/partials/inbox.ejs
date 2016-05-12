@@ -1,0 +1,80 @@
+<section>
+  <h1 class="h1">Inbox</h1>
+  <ul>
+    <% for(var i = inbox.length - 1; i >= 0; i--) { %>
+      <%  if(data.id === inbox[i].fpal[0].rId)  { %>
+    <li class="list">
+      <div class="message-photo">
+        <img src="<%=data.pic%>"/>
+      </div>
+      <div class="from-message <%= inbox[i].name %>">
+        <h1>  <%=inbox[i].spal[0].firstName%> <%=inbox[i].spal[0].lastName%>  </h1>
+        <p> <%= inbox[i].comments[inbox[i].comments.length - 1].value%> </p>
+      </div>
+      <div class="inbox-message">
+        <h1 class="octicon octicon-arrow-left"></h1>
+        <ul class="<%= inbox[i].name %>-message">
+      <%  for(var j = 0; j < inbox[i].comments.length; j++) { %>
+        <li>
+          <div class="string-pic">
+            <img src="<%=data.pic%>" alt="" />
+          </div>
+          <div class="string-message">
+            <h1> <%= inbox[i].comments[j].from_name %> </h1>
+             <h1 class="time"> <%= inbox[i].comments[j].date %> </h1>
+            <p> <%= inbox[i].comments[j].value %> </p>
+          </div>
+        </li>
+      <% }  %>
+      </ul>
+      <form action="">
+           <input type="hidden" name="parent" value="<%=inbox[i].id%>">
+           <input type="hidden" name="parent_name" value="<%= inbox[i].name %>">
+           <input type="hidden" name="from_id" value="<%=loggedIn.id%>">
+           <input type="hidden" name="from_name" value="<%=loggedIn.firstName%>">
+           <input type="hidden" name="from_pic" value="<%=loggedIn.pic%>">
+           <input type="text" name="value" class="comment-box" placeholder="Say something nice">
+           <input type="submit" class="inbox-send" value="Send">
+         </form>
+      </div>
+    </li>
+    <%  } else if(data.id === inbox[i].spal[0].rId) { %>
+      <li class="list">
+        <div class="message-photo">
+          <img src="<%=data.pic%>"/>
+        </div>
+        <div class="from-message <%= inbox[i].name %>">
+          <h1>  <%= inbox[i].fpal[0].firstName%> <%=inbox[i].fpal[0].lastName  %>  </h1>
+          <p> <%= inbox[i].comments[inbox[i].comments.length - 1].value %> </p>
+        </div>
+        <div class="inbox-message">
+          <h1 class="octicon octicon-arrow-left"></h1>
+          <ul class="<%= inbox[i].name %>-message">
+        <%  for(var j = 0; j < inbox[i].comments.length; j++) { %>
+          <li>
+            <div class="string-pic">
+              <img src="<%=data.pic%>" alt="" />
+            </div>
+            <div class="string-message">
+              <h1> <%= inbox[i].comments[j].from_name %> </h1>
+               <h1 class="time"> <%= inbox[i].comments[j].date %> </h1>
+              <p> <%= inbox[i].comments[j].value %> </p>
+            </div>
+          </li>
+        <% }  %>
+        </ul>
+        <form action="">
+           <input type="hidden" name="parent" value="<%=inbox[i].id%>">
+           <input type="hidden" name="parent_name" value="<%= inbox[i].name %>">
+           <input type="hidden" name="from_id" value="<%=loggedIn.id%>">
+           <input type="hidden" name="from_name" value="<%=loggedIn.firstName%>">
+           <input type="hidden" name="from_pic" value="<%=loggedIn.pic%>">
+           <input type="text" name="value" class="comment-box" placeholder="Say something nice">
+           <input type="submit" class="inbox-send" value="Send">
+         </form>
+        </div>
+      </li>
+      <%  } %>
+      <%  } %>
+  </ul>
+</section>

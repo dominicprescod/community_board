@@ -196,11 +196,6 @@ router.get('/neighborhoods/:id', function(req, res){
   });
 });
 
-router.get('/neighborhood/:id', function(req, res){
-  Neighborhoods.findById(req.params.id, function(err, data){
-    res.render('neighborhood.ejs', data);
-  });
-});
 
 
 function isLoggedIn(req, res, next) {
