@@ -8,19 +8,18 @@ var boardSchema = new Schema({
       name: {type: String, required: true},
       date: {type: Date, default: Date.now},
       comments: [commentSchema],
-      neighborhood: {type: String, required: true},
-      // fpal:[{
-      //   firstName: String,
-      //   lastName: String,
-      //   rId: String,
-      //   pic: String
-      // }],
-      // spal: [{
-      //   firstName: String,
-      //   lastName: String,
-      //   rId: String,
-      //   pic: String
-      // }],
+      fpal:[{
+        firstName: String,
+        lastName: String,
+        rId: String,
+        pic: String
+      }],
+      spal: [{
+        firstName: String,
+        lastName: String,
+        rId: String,
+        pic: String
+      }],
       members: [String]
 }, {collection: 'boards'});
 
