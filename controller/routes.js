@@ -3,7 +3,8 @@ var express       = require('express'),
     router        = express.Router(),
     User          = require('../models/user.js'),
     Comment       = require('../models/comment.js'),
-    Board         = require('../models/board.js');
+    Board         = require('../models/board.js'),
+    Neighborhoods = require('../models/neighborhoods.js');
 
 // homepage
 // =====================================
@@ -15,9 +16,13 @@ router.get('/', function(req, res){
 
 // Login & Logout
 // ===========================================================
+// Login Page
+router.get('/login', function(req, res){
+  res.render('login.ejs');
+});
 // login
 router.post('/login',passport.authenticate('local-login',{
-    failureRedirect: '/',}), function(req,res){
+    failureRedirect: '/login',}), function(req,res){
         res.redirect('/users/'+req.user.id);
   });
 
@@ -30,8 +35,13 @@ router.get('/logout',function(req,res){
 
 // Adding new user! / Registering a new user
 // =================================================================================================================================================================================
+// Signup Page
+router.get('/signup', function(req, res){
+  res.render("signup.ejs");
+});
+
 router.post('/',passport.authenticate('local-signup',{
-  failureRedirect: '/'}),function(req,res){
+  failureRedirect: '/signup'}),function(req,res){
     // creating new boards according to the new user's info
     // grabbing the zip code, city and state from the user registration form and putting them in an array to loop through the options
     var boardChecks = [req.user.zip, req.user.city, req.user.state];
@@ -70,12 +80,12 @@ router.post('/',passport.authenticate('local-signup',{
 // ======================================================================================================================
 router.get('/users/:id', isLoggedIn, function(req, res) {
   // for user control flow within template (enables editing only on the user's own page)
-  console.log('req.params.id = ' + req.params.id);
-  console.log('req.user.id = ' + req.user.id);
-  console.log('res.locals.usertrue = ' + res.locals.usertrue);
+  // console.log('req.params.id = ' + req.params.id);
+  // console.log('req.user.id = ' + req.user.id);
+  // console.log('res.locals.usertrue = ' + res.locals.usertrue);
     req.params.id == req.user.id ? res.locals.usertrue = true : res.locals.usertrue = false;
   // finding users by the id passed in the webpage
-  console.log(res.locals.usertrue);
+  // console.log(res.locals.usertrue);
   User.findById(req.params.id,function(err, user){
     // if the page viewed is not the person logged in find or create an inbox message board
     if(!res.locals.usertrue){
@@ -154,20 +164,21 @@ router.get('/board/:id',function(req,res){
 });
 // ====================================================
 
-// New Comment
-// ====================================================
-router.post('/comment',function(req,res){
-  // creates a new comment using the schema
-    var newComment = new Comment(req.body);
-    // finds the current board using the information captured the form
-    Board.findById(newComment.parent,function(err,board){
-      // pushing to the comments element in the object and saving
-      board.comments.push(newComment);
-      board.save(function(){});
-      res.redirect('/board/'+newComment.parent);
-    });
-});
-// ====================================================
+// // New Comment
+// // ====================================================
+// router.post('/comment',function(req,res){
+//   // creates a new comment using the schema
+//     var newComment = new Comment(req.body);
+//     // finds the current board using the information captured the form
+//     Board.findById(newComment.parent,function(err,board){
+//       // pushing to the comments element in the object and saving
+//       board.comments.push(newComment);
+//       board.save(function(){});
+//       res.redirect('/board/'+newComment.parent);
+//       // res.end();
+//     });
+// });
+// // ====================================================
 
 // ================================================================
 // Deleting a User
@@ -177,6 +188,20 @@ router.delete('/users/:id', function(req,res){
     res.redirect('/');
 });
 // ================================================================
+
+// Gets all the neighborhoods for the selected borough
+router.get('/borough/:id', function(req, res){
+  Neighborhoods.find({borough: req.params.id}, function(err, data){
+    res.send(data);
+  });
+});
+
+
+router.get('/neighborhood/:id',function(req, res){
+  Neighborhoods.findById(req.params.id, function(err, place){
+    res.send(place);
+  });
+});
 
 
 

@@ -1,53 +1,46 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/styles/board.css" type="text/css">
+    <link rel="stylesheet" href="/styles/index.css" type="text/css">
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="/js/board.js"></script>
-    <title><%=data.name%> Board</title>
+    <script src="/js/board.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../styles/octicons/octicons.css">
+    <link rel="stylesheet" href="../styles/newProfile.css">
   </head>
   <body>
-    <header>
-      <h1>Community Board</h1>
-      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-      <a href="/users/<%=user.id%>">Profile</a>
-    </header>
-    <main>
-      <div id="board-info">
-        <h1><%=data.name%></h1>
-        <p><%=data.date%></p>
-        <p><%=data.members.length%> Neighbors </p>
-      </div>
-      <div id="comments">
-        <%for(var i = 0; i < data.comments.length; i++){%>
-            <div class="comment">
-              <% if(data.comments[i].from_id !== user.id){%>
-              <a href="/users/<%=data.comments[i].from_id%>"><img src="<%=data.comments[i].from_pic%>"/></a>
-              <div class="comment-container">
-                <p><em><%=data.comments[i].from_name%></em></p>
-                <p><%=data.comments[i].value%></p>
-              </div>
-            </div>
-            <% } else{%>
-              <div class="user-comment-container">
-                <p><em><%=data.comments[i].from_name%></em></p>
-                <p><%=data.comments[i].value%></p>
-              </div>
-              <a href="/users/<%=data.comments[i].from_id%>"><img src="<%=data.comments[i].from_pic%>"style="padding-left: 10px"/></a>
-            </div>
+    <% include ./partials/profileHeader.ejs %>
+    <div class="inbox-message width">
+      <h1 class="octicon octicon-arrow-left" onclick="goBack()"></h1>
+      <ul class="<%= data.id %>">
+    <%for(var i = 0; i < data.comments.length; i++){%>
+      <li>
+        <div class="string-pic">
+          <img src="<%=data.comments[i].from_pic%>" alt="" />
+        </div>
+        <div class="string-message">
+          <h1> <%=data.comments[i].from_name%> </h1>
+           <h1 class="time"> <%= data.comments[i].date %> </h1>
+          <p> <%= data.comments[i].value %> </p>
+        </div>
+      </li>
+    <% }  %>
+    </ul>
+    <form action="">
+       <input type="hidden" name="parent" value="<%=data.id%>">
+       <input type="hidden" name="from_id" value="<%=user.id%>">
+       <input type="hidden" name="from_name" value="<%=user.firstName%>">
+       <input type="hidden" name="from_pic" value="<%=user.pic%>">
+       <input type="text" name="value" class="comment-box" placeholder="Say something nice">
+       <input type="submit" class="inbox-send" value="Send">
+     </form>
+    </div>
 
-          <%}%>
-        <%}%>
-      </div>
-      <form action="/comment" method="post">
-        <input type="text" name="value" placeholder="Comment">
-        <input type="hidden" name="parent" value="<%=data.id%>">
-        <input type="hidden" name="from_id" value="<%=user.id%>">
-        <input type="hidden" name="from_name" value="<%=user.firstName%>">
-        <input type="hidden" name="from_pic" value="<%=user.pic%>">
-        <input type="submit" value="Enter">
-      </form>
-    </main>
+
   </body>
+  <script>
+function goBack() {
+    window.history.back();
+}
+</script>
 </html>

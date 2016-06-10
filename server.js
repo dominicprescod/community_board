@@ -6,7 +6,10 @@ var express         = require('express'),
     passport        = require('passport'),
     session         = require('express-session'),
     app             = express(),
+    http            = require('http').Server(app),
+    io              = require('socket.io')(http),
     routesController  = require('./controller/routes.js'),
+    convertController = require('./controller/convert.js'),
     User            = require('./models/user.js'),
     Board           = require('./models/board.js'),
     port            = process.env.PORT || 3000,
@@ -39,6 +42,8 @@ app.use(function(req, res, next) {
   res.locals.login = req.isAuthenticated();
   next();
 });
+
+
 // using mongoose
 // mongoose.connect('mongodb://localhost/community_board');
 mongoose.connect(mongoUri);
@@ -46,8 +51,16 @@ mongoose.connect(mongoUri);
 // route for the users after the visiting the profile page
 app.use('/',routesController);
 
+app.use('/convert', convertController);
+
+// requiring socket
+require('./controller/socket.js')(http);
+
 // connecting to the server..listening for request & response
-app.listen(port,function(){
+http.listen(port,function(){
+  // http.listen(port,function(){
+  //   console.log('http is on');
+  // });
   console.log('==========================');
   console.log('Running on port = '+port);
   console.log('==========================');

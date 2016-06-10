@@ -1,24 +1,13 @@
 #Community Board
 
-An app that allows neighbors to communicate with each other via group forums and private messaging based on their location.
+Community Board
 
-The app was created using three out of four of the MEAN stack;
+A way for neighbors to connect and converse with each other over the web.
 
-- MongoDB
-- Express
-- NodeJS
+A neighbor can log in to the service and view the various neighborhoods available on the site. Join a conversation on any of the community specific topics or make up one and see other interested neighbors join in on the conversation. They can also carry on the conversation with their favorite neighbors via private chat.
 
-The app consists of three models;
-
-- Users
-- Boards
-	- Private and forum based
-- Messages
-	- Created as a reference for the Boards model.
-
-The main challenge faced with creating this app was automatically adding new users to existing forums on sign up, and creating private messaging session with limited input from the user. I mostly combined queries on the server side checking for existing data before creating new sessions, and used IDs to mark the unique messaging sessions between particular users.
-
-```Passport``` and ```Bcrypt-NodeJS``` was used for user authentication, and combining ```Express-Sessions``` with ```EJS``` on the client side. Users were able to distinguish their messages from other users in forums and in private messaging sessions. 
+The platform assumes your location and suggests nearby neighborhoods you might be interested in. You can easily select the featured neighborhoods or search for your favorite place.
+For future implementations neighbors can select “their” neighborhood and by continued participation will be distinguished as a “local”. In visiting other neighborhoods they will be labeled a tourist until their contributions to that particular neighborhood increase in frequency.
 
 #Tech Used
 - NodeJS

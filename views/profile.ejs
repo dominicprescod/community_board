@@ -1,158 +1,51 @@
 <!DOCTYPE html>
 <html lang="en-US">
+  <% include ./partials/head %>
   <head>
-    <meta charset="utf-8">
-    <title><%=data.firstName%>'s Profile</title>
-    <link rel="stylesheet" href="/styles/profile.css" type="text/css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="/js/profile.js"></script>
+    <link rel="stylesheet" href="../styles/octicons/octicons.css">
+    <link rel="stylesheet" href="../styles/newProfile.css">
   </head>
   <body>
     <header>
-      <h1>Community Board</h1>
-      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-      <a href="/users/<%=loggedIn.id%>">Profile</a>
-<%if(usertrue){%>
-      <form action="/users/<%=data.id%>" method="POST">
-							<input type="hidden" name="_method" value="DELETE">
-							<button id="delete-button">Delete User</button>
-						</form>
-          <%}%>
-    </header>
-    <main>
-      <div class="profile-inbox">
-        <div class="profile-details">
-          <div class="Picture">
-            <img src="<%=data.pic%>"/>
-            <%if(usertrue){%>
-              <form class="" action="/<%=data.id%>/editPic" method="post">
-                <input type="text" name="pic" placeholder="Pic URL">
-                <input type="hidden" name="firstName" value="<%=data.firstName%>">
-                <input type="hidden" name="lastName" value="<%=data.lastName%>">
-                <input type="hidden" name="email" value="<%=data.email%>">
-                <input type="hidden" name="password" value="<%=data.password%>">
-                <input type="hidden" name="street" value="<%=data.street%>">
-                <input type="hidden" name="city" value="<%=data.city%>">
-                <input type="hidden" name="state" value="<%=data.state%>">
-                <input type="hidden" name="zip" value="<%=data.zip%>">
-                <input type="hidden" name="_method" value="PUT"/>
-                <input type="submit" value="Edit">
-              </form>
-            <%}%>
-          </div>
-          <div class="first-last-name">
-            <ul>
-              <li>
-                <h1><%=data.firstName%></h1>
-                <br>
-                <h1><%=data.lastName%></h1>
-              </li>
-              <hr>
-              <li><p>Email:</p></li>
-              <li><p><%=data.email%></p></li>
-            </ul>
-          </div>
-          <div class="email-address">
-            <hr>
-            <p>Address:</p>
-            <p>Street: <%=data.street%></p>
-            <p>City: <%=data.city%></p>
-            <p>State: <%=data.state%></p>
-            <p>Zip Code: <%=data.zip%></p>
-          </div>
-        </div>
-        <div class="inbox">
-          <%if(!usertrue){%>
-            <h3>Inbox</h3>
-            <div id="comments">
-              <%for(var i = 0; i < inbox.comments.length; i++){%>
-
-                <% if(inbox.comments[i].from_id !== loggedIn.id){%>
-                  <div class="comment">
-                    <a href="/users/<%=inbox.comments[i].from_id%>"><img src="<%=inbox.comments[i].from_pic%>"/></a>
-                    <div class="comment-container">
-                    <p><em><%=inbox.comments[i].from_name%></em></p>
-                    <p><%=inbox.comments[i].value%></p>
-                    </div>
-                </div>
-                <% } else{%>
-                  <div class="comment">
-                <div class="user-comment-container">
-                  <p><em><%=inbox.comments[i].from_name%></em></p>
-                  <p><%=inbox.comments[i].value%></p>
-                </div>
-                <a href="/users/<%=inbox.comments[i].from_id%>"><img src="<%=inbox.comments[i].from_pic%>"style="padding-left: 10px"/></a>
-                </div>
-
-                <%}%>
-
-              <%}%>
-            </div>
-            <form action="/comment" method="post">
-              <input type="hidden" name="parent" value="<%=inbox.id%>">
-              <input type="hidden" name="from_id" value="<%=loggedIn.id%>">
-              <input type="hidden" name="from_name" value="<%=loggedIn.firstName%>">
-              <input type="hidden" name="from_pic" value="<%=loggedIn.pic%>">
-              <input type="text" name="value" id="comment-box" placeholder="Comment">
-              <input type="submit" id="inbox-send" value="Send">
-            </form>
-          <%} else {%>
-            <% for(var i = 0; i < inbox.length; i++) {%>
-                <%if(data.id === inbox[i].fpal[0].rId){%>
-                  <h3><%=inbox[i].spal[0].firstName%> <%=inbox[i].spal[0].lastName%></h3>
-                <%} else if(data.id === inbox[i].spal[0].rId){%>
-                  <h3><%=inbox[i].fpal[0].firstName%> <%=inbox[i].fpal[0].lastName%></h3>
-                <%}%>
-                <div id="comments">
-                <%for(var j = 0; j < inbox[i].comments.length; j++){%>
-
-<% if(inbox[i].comments[j].from_id !== loggedIn.id){%>
-  <div class="comment">
-    <a href="/users/<%=inbox[i].comments[j].from_id%>"><img src="<%=inbox[i].comments[j].from_pic%>"/></a>
-    <div class="comment-container">
-    <p><em><%=inbox[i].comments[j].from_name%></em></p>
-    <p><%=inbox[i].comments[j].value%></p>
-    </div>
-</div>
-<% } else{%>
-  <div class="comment">
-<div class="user-comment-container">
-  <p><em><%=inbox[i].comments[j].from_name%></em></p>
-  <p><%=inbox[i].comments[j].value%></p>
-</div>
-<a href="/users/<%=inbox[i].comments[j].from_id%>"><img src="<%=inbox[i].comments[j].from_pic%>"style="padding-left: 10px"/></a>
-</div>
-
-<%}%>
-
-                    <%}%>
-                  </div>
-                  <form action="/comment" method="post">
-                    <input type="hidden" name="parent" value="<%=inbox[i].id%>">
-                    <input type="hidden" name="from_id" value="<%=loggedIn.id%>">
-                    <input type="hidden" name="from_name" value="<%=loggedIn.firstName%>">
-                    <input type="hidden" name="from_pic" value="<%=loggedIn.pic%>">
-                    <input type="text" name="value" id="comment-box" placeholder="Comment">
-                    <input type="submit" id="inbox-send" value="Send">
-                  </form>
-                    <%}%>
-            <%}%>
-        </div>
+      <div class="logo">
+        <a href="/logout" class="btn btn-default btn-sm"><h1></h1></a>
       </div>
+      <div class="info">
+          <ul>
+            <a href="#"><li class="octicon octicon-comment"><h5></h5></li></a>
+            <li><img src="<%=data.pic%>"/></li>
+          </ul>
+      </div>
+    </header>
+    <main style="height: 1130px;">
+      <form class="" action="index.html" method="post">
+      <input type="text" name="name" placeholder="Find your neighborhood">
+      </form>
+
       <div class="boards">
-        <h1>Boards</h1>
-        <%for(var i = 0; i < data.boards.length; i++){%>
-          <div class="my-boards">
-              <p>&#xE801</p>
-              <div><a href="/board/<%=data.boards[i].id%>"><%=data.boards[i].name%></a></div>
-              <div><%=data.boards[i].id%></div>
-              <div><%=data.boards[i].date%></div>
-          </div>
-        <%}%>
+        <div class="my-boards">Manhattan</div>
+        <div class="my-boards">Brooklyn</div>
+        <div class="my-boards">Bronx</div>
+        <div class="my-boards">Queens</div>
+<div class="my-boards">Staten Island</div>
       </div>
     </main>
-    <footer>
+    <% include ./partials/inbox %>
+    <div id="show-neighborhoods">
+      <div class="h1">
+        <h2 class="octicon octicon-home"></h2>
+        <h1 style="font-size: 60px;"></h1>
+      </div>
+      <ul></ul>
+    </div>
 
-    </footer>
-      </body>
+    <div id="neighborhood">
+      <h1 class="h1">Maurry Hill</h1>
+      <div id="members"></div>
+      <div id="topics"></div>
+      <div id="search-add"></div>
+      <div id="forum"></div>
+    </div>
+
+  </body>
 </html>

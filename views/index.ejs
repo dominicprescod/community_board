@@ -1,40 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-  <link rel="stylesheet" href="/styles/index.css" type="text/css">
-    <title>Community Board</title>
-  </head>
+  <% include ./partials/head %>
   <body>
-    <header>
-      <h1>Community Board</h1>
-    </header>
-    <main>
-      <div id="one">
-        <form class="" action="/login" method="post">
-          <h5>Sign In</h5>
-          <input type="text" name="email" placeholder="Email">
-          <input type="password" name="password" placeholder="Passsword">
-          <br>
-          <input class="submit" type="submit" value="Go">
-        </form>
-
-        <hr>
-        <form action='/' method="post">
-          <h5>Register</h5>
-          <input type="text" name="firstName" placeholder="First Name">
-          <input type="text" name="lastName" placeholder="Last Name">
-          <input type="text" name="email" placeholder="Email">
-          <input type="password" name="password" placeholder="Passsword">
-          <input type="text" name="street" placeholder="Street Address">
-          <input type="text" name="city" placeholder="City">
-          <input type="text" name="state" placeholder="State">
-          <input type="number" name="zip" placeholder="Zip Code">
-          <br>
-          <input class="submit" type="submit" value="Join">
-        </form>
-
-      </div>
-    </main>
+    <% include ./partials/header %>
   </body>
 </html>
