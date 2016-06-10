@@ -189,10 +189,17 @@ router.delete('/users/:id', function(req,res){
 });
 // ================================================================
 
-
-router.get('/neighborhoods/:id', function(req, res){
+// Gets all the neighborhoods for the selected borough
+router.get('/borough/:id', function(req, res){
   Neighborhoods.find({borough: req.params.id}, function(err, data){
     res.send(data);
+  });
+});
+
+
+router.get('/neighborhood/:id',function(req, res){
+  Neighborhoods.findById(req.params.id, function(err, place){
+    res.send(place);
   });
 });
 

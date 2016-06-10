@@ -16,58 +16,58 @@ var express = require('express'),
     var statenIsland = require('../text/statenisland.txt');
 
     router.get('/', function(req, res){
-      // console.log(manhattan.split('\n')[manhattan.split('\n').length - 1]);
-      //
-      // manhattan.split('\n').forEach(function(i){
-      //   if(i !== ""){
-      //     var newNeighborhood = new Neighborhood({
-      //                                             title: i,
-      //                                             borough: "Manhattan"
-      //                                           });
-      //     newNeighborhood.save(function(err, data){});
-      //   }
-      // });
+      // console.log(manhattan.splisht('\n')[manhattan.split('\n').length - 1]);
+
+      manhattan.split('\n').forEach(function(i){
+        if(i !== ""){
+          var newNeighborhood = new Neighborhood({
+                                                  title: i,
+                                                  borough: "Manhattan"
+                                                });
+          newNeighborhood.save(function(err, data){});
+        }
+      });
       // console.log(brooklyn.split('\n').length);
-      // brooklyn.split('\n').forEach(function(i){
-      // if (i !== '') {
-      //   var newNeighborhood = new Neighborhood({
-      //                                             title: i,
-      //                                             borough: "Brooklyn"
-      //                                           });
-      //     newNeighborhood.save(function(err, data){});
-      // }
-      // });
+      brooklyn.split('\n').forEach(function(i){
+      if (i !== '') {
+        var newNeighborhood = new Neighborhood({
+                                                  title: i,
+                                                  borough: "Brooklyn"
+                                                });
+          newNeighborhood.save(function(err, data){});
+      }
+      });
       // console.log(queens.split('\n').length);
-      // queens.split('\n').forEach(function(i){
-      //   if(i !== '')  {
-      //     var newNeighborhood = new Neighborhood({
-      //                                           title: i,
-      //                                           borough: "Queens"
-      //                                         });
-      //     newNeighborhood.save(function(err, data){});
-      //   }
-      // });
+      queens.split('\n').forEach(function(i){
+        if(i !== '')  {
+          var newNeighborhood = new Neighborhood({
+                                                title: i,
+                                                borough: "Queens"
+                                              });
+          newNeighborhood.save(function(err, data){});
+        }
+      });
       // console.log(bronx.split('\n').length);
-      // bronx.split('\n').forEach(function(i){
-      //   if(i !== ''){
-      //     var newNeighborhood = new Neighborhood({
-      //                                             title: i,
-      //                                             borough: "Bronx"
-      //                                           });
-      //     newNeighborhood.save(function(err, data){});
-      //   }
-      // });
+      bronx.split('\n').forEach(function(i){
+        if(i !== ''){
+          var newNeighborhood = new Neighborhood({
+                                                  title: i,
+                                                  borough: "Bronx"
+                                                });
+          newNeighborhood.save(function(err, data){});
+        }
+      });
       // console.log(statenIsland.split('\n').length);
-      // statenIsland.split('\n').forEach(function(i){
-      //   if(i !== ''){
-      //     var newNeighborhood = new Neighborhood({
-      //                                             title: i,
-      //                                             borough: "Staten Island"
-      //                                           });
-      //     newNeighborhood.save(function(err, data){});
-      //
-      //   }
-      // });
+      statenIsland.split('\n').forEach(function(i){
+        if(i !== ''){
+          var newNeighborhood = new Neighborhood({
+                                                  title: i,
+                                                  borough: "Staten Island"
+                                                });
+          newNeighborhood.save(function(err, data){});
+
+        }
+      });
 
       res.redirect('/');
     });

@@ -51,7 +51,7 @@ mongoose.connect(mongoUri);
 // route for the users after the visiting the profile page
 app.use('/',routesController);
 
-// app.use('/convert', convertController);
+app.use('/convert', convertController);
 
 // requiring socket
 require('./controller/socket.js')(http);

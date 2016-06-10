@@ -83,7 +83,7 @@ $('.my-boards').click(function(){
   $('#show-neighborhoods div h1').text($(this).text());
 
   $.ajax({
-    url: "/neighborhoods/"+$(this).text(),
+    url: "/borough/"+$(this).text(),
     method: "GET"
   }).then(function(response){
     // console.log(response);
