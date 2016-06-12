@@ -204,6 +204,10 @@ router.get('/neighborhood/:id',function(req, res){
 });
 
 
+router.get('/board', function(req,res){
+  res.render('board.ejs');
+});
+
 
 function isLoggedIn(req, res, next) {
 

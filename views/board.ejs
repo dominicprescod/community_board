@@ -1,46 +1,8 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <link rel="stylesheet" href="/styles/index.css" type="text/css">
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script src="/js/board.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="../styles/octicons/octicons.css">
-    <link rel="stylesheet" href="../styles/newProfile.css">
-  </head>
+<html>
+  <% include ./partials/head %>
   <body>
-    <% include ./partials/profileHeader.ejs %>
-    <div class="inbox-message width">
-      <h1 class="octicon octicon-arrow-left" onclick="goBack()"></h1>
-      <ul class="<%= data.id %>">
-    <%for(var i = 0; i < data.comments.length; i++){%>
-      <li>
-        <div class="string-pic">
-          <img src="<%=data.comments[i].from_pic%>" alt="" />
-        </div>
-        <div class="string-message">
-          <h1> <%=data.comments[i].from_name%> </h1>
-           <h1 class="time"> <%= data.comments[i].date %> </h1>
-          <p> <%= data.comments[i].value %> </p>
-        </div>
-      </li>
-    <% }  %>
-    </ul>
-    <form action="">
-       <input type="hidden" name="parent" value="<%=data.id%>">
-       <input type="hidden" name="from_id" value="<%=user.id%>">
-       <input type="hidden" name="from_name" value="<%=user.firstName%>">
-       <input type="hidden" name="from_pic" value="<%=user.pic%>">
-       <input type="text" name="value" class="comment-box" placeholder="Say something nice">
-       <input type="submit" class="inbox-send" value="Send">
-     </form>
-    </div>
-
-
+    <% include ./partials/header %>
+  
   </body>
-  <script>
-function goBack() {
-    window.history.back();
-}
-</script>
 </html>
