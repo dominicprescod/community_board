@@ -340,3 +340,33 @@ section {
   right: 0;
   transition: .1s;
 }
+
+#neighborhood-container {
+  width: 100%;
+  height: calc(100vh - 160px);
+  background: lightblue;
+}
+
+#neighborhood-title {
+  width: 100%;
+  height: 10%;
+  background: orange;
+  text-align: center;
+}
+
+#neighborhood-title h1 {
+padding: 40px
+}
+
+
+#neighborhood-topics {
+  width: 100%;
+  height: 20%;
+  background: brown;
+}
+
+#neighborhood-topic-chat {
+  width: 100%;
+  height: 70%;
+  background: red;
+}
